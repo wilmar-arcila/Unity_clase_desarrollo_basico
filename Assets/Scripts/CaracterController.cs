@@ -14,7 +14,7 @@ public class CaracterController : MonoBehaviour
     float fuerzaSalto          = 50;     // x veces la masa del personaje
     float fuerzaDesplazamiento = 1000;    // Fuerza en Newtons
 
-    bool enElPiso = true;
+    bool enElPiso = false;
 
     [SerializeField] private AudioSource salto_SFX;
     
