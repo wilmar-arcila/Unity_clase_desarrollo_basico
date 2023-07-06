@@ -36,10 +36,16 @@ public class CaracterController : MonoBehaviour
         if(Input.GetKey("right") && enElPiso){
             Debug.Log("RIGHT");
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(fuerzaDesplazamiento, 0));
+            gameObject.GetComponent<Animator>().SetBool("running", true);
         }
         else if(Input.GetKey("left") && gameObject.transform.position.x > limiteL && enElPiso){
             Debug.Log("LEFT");
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-fuerzaDesplazamiento, 0));
+            gameObject.GetComponent<Animator>().SetBool("running", true);
+        }
+
+        if( !(Input.GetKey("right") || Input.GetKey("left")) ){
+            gameObject.GetComponent<Animator>().SetBool("running", false);
         }
 
         if(Input.GetKeyDown("space") && enElPiso){
