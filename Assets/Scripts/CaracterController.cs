@@ -8,11 +8,12 @@ public class CaracterController : MonoBehaviour
     
     //float nivelPiso            = -2.66f; // Este valor representa el nivel del piso para el personaje
     float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
-    float limiteR              = 8.37f;  // Este valor representa el límite derecho de la cámara para el personaje
-    float limiteL              = -8.45f; // Este valor representa el límite izquierdo de la cámara para el personaje
-    float velocidad            = 4f;     // Velocidad de desplazamiento del personaje
     float fuerzaSalto          = 50;     // x veces la masa del personaje
     float fuerzaDesplazamiento = 1000;    // Fuerza en Newtons
+
+    private Rigidbody2D rb2d;
+    private Animator animator;
+    private SpriteRenderer spriteR;
 
     bool enElPiso = false;
 
@@ -24,6 +25,9 @@ public class CaracterController : MonoBehaviour
         gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
         Debug.Log("INIT");
         Debug.Log("VIDAS: " + vidas);
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteR = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -35,24 +39,27 @@ public class CaracterController : MonoBehaviour
         
         if(Input.GetKey("right") && enElPiso){
             Debug.Log("RIGHT");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(fuerzaDesplazamiento, 0));
-            gameObject.GetComponent<Animator>().SetBool("running", true);
+            rb2d.AddForce(new Vector2(fuerzaDesplazamiento, 0));
+            animator.SetBool("running", true);
+            spriteR.flipX=false;
         }
-        else if(Input.GetKey("left") && gameObject.transform.position.x > limiteL && enElPiso){
+        else if(Input.GetKey("left") && enElPiso){
             Debug.Log("LEFT");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-fuerzaDesplazamiento, 0));
-            gameObject.GetComponent<Animator>().SetBool("running", true);
+            rb2d.AddForce(new Vector2(-fuerzaDesplazamiento, 0));
+            animator.SetBool("running", true);
+            spriteR.flipX=true;
         }
 
         if( !(Input.GetKey("right") || Input.GetKey("left")) ){
-            gameObject.GetComponent<Animator>().SetBool("running", false);
+            animator.SetBool("running", false);
         }
 
         if(Input.GetKeyDown("space") && enElPiso){
             Debug.Log("UP - enElPiso: " + enElPiso);
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -fuerzaSalto*Physics2D.gravity[1]*gameObject.GetComponent<Rigidbody2D>().mass));
+            rb2d.AddForce(new Vector2(0, -fuerzaSalto*Physics2D.gravity[1]*rb2d.mass));
             salto_SFX.Play();
             enElPiso = false;
+            animator.SetBool("jump", true);
         }
 
     }
@@ -60,6 +67,7 @@ public class CaracterController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.transform.tag == "Ground"){
             enElPiso = true;
+            animator.SetBool("jump", false);
             Debug.Log("GROUND COLLISION");
         }
         else if(collision.transform.tag == "Obstaculo"){
