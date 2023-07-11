@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaracterController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     private int vidas = 3;
     
     float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
     float fuerzaSalto          = 50;     // x veces la masa del personaje
-    float fuerzaImpulso        = 20000;  // Fuerza en Newtons
+    float fuerzaImpulso        = 25000;  // Fuerza en Newtons
     float fuerzaDesplazamiento = 1000;   // Fuerza en Newtons
 
     private Rigidbody2D rb2d;       // Variable para mantener la referencia al componente Rigidbody2D
