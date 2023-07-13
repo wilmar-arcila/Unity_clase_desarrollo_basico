@@ -108,13 +108,12 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision){
-        Debug.Log("Caída");
-        vidas -= 1;
-        Debug.Log("VIDAS: " + vidas);
-        if(vidas <= 0){
-            Debug.Log("GAME OVER");
-            vidas = 3;
+    private void OnTriggerEnter2D(Collider2D collider){
+        if(collider.tag == "FallDetector"){
+            Debug.Log("Caída");
+        }
+        else if(collider.tag == "Trampa"){
+            Debug.Log("Trampa");
         }
         gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
     }
