@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
-{
-    private int vidas = 3;
-    
+{    
     float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
     float fuerzaSalto          = 50;     // x veces la masa del personaje
     float fuerzaImpulso        = 25000;  // Fuerza en Newtons
@@ -15,8 +13,8 @@ public class CharacterController : MonoBehaviour
     private Animator animator;      // Variable para mantener la referencia al componente Animator
     private SpriteRenderer spriteR; // Variable para mantener la referencia al componente SpriteRenderer
 
-    bool enElPiso = false; // Bandera que verifica que el personaje ha tocado el piso
-    bool hasJump  = false; // Bandera que indica que el personaje ha realizado el primer salto
+    bool enElPiso   = false; // Bandera que verifica que el personaje ha tocado el piso
+    bool hasJumped  = false; // Bandera que indica que el personaje ha realizado el primer salto
 
     [SerializeField] private AudioSource salto_SFX;
     
@@ -24,7 +22,6 @@ public class CharacterController : MonoBehaviour
     {
         gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
         Debug.Log("INIT");
-        Debug.Log("VIDAS: " + vidas);
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
         spriteR = GetComponent<SpriteRenderer>(); // Se obtiene la referencia al componente SpriteRenderer del personaje
@@ -63,20 +60,20 @@ public class CharacterController : MonoBehaviour
         // ** Detector de movimiento descendente **
         //    Sirve para cambiar la animación del personaje y como
         //    límite para realizar un segundo salto
-        if(rb2d.velocity.y < -0.1){
-            hasJump = false;
+        if(rb2d.velocity.y < -0.5){
+            hasJumped = false;
             animator.SetBool("falling", true);
             animator.SetBool("jump", false);
             animator.SetBool("doubleJump", false);
         }
 
         // Implementación del salto
-        if((Input.GetKeyDown("space") && enElPiso)||(Input.GetKeyDown("space") && hasJump)){
+        if((Input.GetKeyDown("space") && enElPiso)||(Input.GetKeyDown("space") && hasJumped)){
             Debug.Log("UP - enElPiso: " + enElPiso);
-            if(hasJump){
+            if(hasJumped){
                 // Esto se ejecuta cuando YA HA SALTADO por primera vez
                 animator.SetBool("doubleJump", true);
-                hasJump  = false;
+                hasJumped = false;
                 float d_i = 1;
                 if(rb2d.velocity.x < 0) d_i = -1; // ¿El personaje va para la derecha o la izquierda?
                 //fuerza vertical y horizontal - como el personaje está en el aire es necesario imprimirle también fuerza horizontal
@@ -85,7 +82,7 @@ public class CharacterController : MonoBehaviour
             else{
                 // Esto se ejecuta cuando es el PRIMER SALTO
                 salto_SFX.Play();
-                hasJump  = true;
+                hasJumped = true;
                 animator.SetBool("jump", true);
                 animator.SetBool("doubleJump", false);
                 //fuerza vertical - el desplazamiento horizontal lo da la inercia que lleve el personaje
@@ -106,15 +103,5 @@ public class CharacterController : MonoBehaviour
             enElPiso = true;
             Debug.Log("OBSTACLE COLLISION");
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.tag == "FallDetector"){
-            Debug.Log("Caída");
-        }
-        else if(collider.tag == "Trampa"){
-            Debug.Log("Trampa");
-        }
-        gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
     }
 }
