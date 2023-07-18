@@ -10386,6 +10386,38 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 308795474, guid: 46200cd382e1343bd9b8ec96c48f5387, type: 3}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2073103869}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: changeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827938501619385577, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6827938501619385588, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
       propertyPath: m_Name
       value: B_MenuPpal
@@ -10481,6 +10513,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6827938501619385591, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
   m_PrefabInstance: {fileID: 2073103866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2073103868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6827938501619385588, guid: c776a5e5ec39b977086598a7f2bc9665, type: 3}
+  m_PrefabInstance: {fileID: 2073103866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073103869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073103868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3a34d7d24446a61aa091e3b6e613b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078188212
 GameObject:
   m_ObjectHideFlags: 0
