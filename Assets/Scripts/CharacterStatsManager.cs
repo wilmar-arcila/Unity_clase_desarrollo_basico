@@ -13,7 +13,7 @@ public class CharacterStatsManager : MonoBehaviour
 
     private float respawnHigh = 6f;
 
-    private Vector3 puntoAparicion = new Vector3(0,respawnHigh,0);
+    private Vector3 respawnPoint;
 
     private void Start()
     {
@@ -27,13 +27,14 @@ public class CharacterStatsManager : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+        respawnPoint = new Vector3(0,respawnHigh,0);
     }
 
     public void setScore(int _score){
         score = _score;
     }
     public int getetScore(){
-        return _score;
+        return score;
     }
     public int raiseScore(int _plusScore){
         score += _plusScore;
@@ -54,15 +55,19 @@ public class CharacterStatsManager : MonoBehaviour
     private void manageDeath(){
         animator.SetTrigger("death");
         lifes--;
-        if(vidas <= 0){
+        if(lifes <= 0){
             Debug.Log("GAME OVER");
         }
         else{
             Debug.Log("Vidas: " + lifes);
+            StartCoroutine(respawnCharacter());
         }
     }
 
-    private void restartPosition(){
-        transform.position = puntoAparicion;
+    private IEnumerator respawnCharacter(){
+        Debug.Log("Respawn Character at " + respawnPoint);
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("iddle");
+        transform.position = respawnPoint;
     }
 }
