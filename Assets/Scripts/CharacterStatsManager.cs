@@ -6,14 +6,14 @@ public class CharacterStatsManager : MonoBehaviour
 {
     public static CharacterStatsManager statsManager;
 
-    private Animator animator;
-
-    private int lifes = 3;
+    private Vector3 respawnPoint;
+    private int lives = 3;
     private int score = 0;
+    private int[] items = new int[]{0,0,0};
+    private bool[] powers = new bool[]{false,false,false};
 
     private float respawnHigh = 6f;
 
-    private Vector3 respawnPoint;
 
     private void Start()
     {
@@ -26,14 +26,14 @@ public class CharacterStatsManager : MonoBehaviour
             Destroy(this);
         }
 
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         respawnPoint = new Vector3(0,respawnHigh,0);
     }
 
     public void setScore(int _score){
         score = _score;
     }
-    public int getetScore(){
+    public int getScore(){
         return score;
     }
     public int raiseScore(int _plusScore){
@@ -41,33 +41,65 @@ public class CharacterStatsManager : MonoBehaviour
         return score;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.transform.tag == "Trampa"){
-            Debug.Log("TRAMPA");
-            manageDeath();
-        }
-        else if(collider.tag == "FallDetector"){
-            Debug.Log("Caída");
-            manageDeath();
-        }
+    public int getLives(){
+        return lives;
+    }
+    public int decreseLives(){
+        lives--;
+        return lives;
+    }
+    public int increseLives(){
+        lives++;
+        return lives;
     }
 
-    private void manageDeath(){
-        animator.SetTrigger("death");
-        lifes--;
-        if(lifes <= 0){
-            Debug.Log("GAME OVER");
-        }
-        else{
-            Debug.Log("Vidas: " + lifes);
-            StartCoroutine(respawnCharacter());
-        }
+    public (int, int, int) getItems(){
+        return (items[0], items[1], items[2]);
+    }
+    public void setItems((int item1, int item2, int item3)_items){
+        items[0] = _items.item1;
+        items[1] = _items.item2;
+        items[2] = _items.item3;
+    }
+    public int increseItem1(int _item){
+        items[0] += _item;
+        return items[0];
+    }
+    public int increseItem2(int _item){
+        items[1] += _item;
+        return items[1];
+    }
+    public int increseItem3(int _item){
+        items[2] += _item;
+        return items[2];
     }
 
-    private IEnumerator respawnCharacter(){
-        Debug.Log("Respawn Character at " + respawnPoint);
-        yield return new WaitForSeconds(1);
-        animator.SetTrigger("iddle");
-        transform.position = respawnPoint;
+    public (bool, bool, bool) getPowers(){
+        return (powers[0], powers[1], powers[2]);
     }
+    public void setPowers((bool item1, bool item2, bool item3)_powers){
+        powers[0] = _powers.item1;
+        powers[1] = _powers.item2;
+        powers[2] = _powers.item3;
+    }
+    public bool setPower1(bool _power){
+        power[0] += _power;
+        return power[0];
+    }
+    public bool setPower2(bool _power){
+        power[1] += _power;
+        return power[1];
+    }
+    public bool setPower3(bool _power){
+        power[2] += _power;
+        return power[2];
+    }
+
+    public void setRespawnPoint(Vector3 _respawnPoint){
+        respawnPoint = new Vector3(_respawnPoint[0], respawnHigh, _respawnPoint[2]);
+    }
+    public Vector3 getRespawnPoint(){
+        return respawnPoint;
+    }
+
 }
