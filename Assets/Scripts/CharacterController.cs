@@ -32,6 +32,8 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if(PauseController.isPaused()){return;}
+        
         // Si el personaje está rotando mucho se vuelve a poner vertical para evitar
         // que se vaya a quedar acostado en el piso
         if(transform.rotation.z > 0.3 || transform.rotation.z < -0.3){

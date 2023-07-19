@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void changeScene(int _escena){
+   void Start() {
+      Debug.Log("ENTERING ESCENE: " + SceneManager.GetActiveScene().buildIndex);
+   }
+   
+   public void changeScene(int _escena){
       Debug.Log("CALL -> changeScene: " + _escena);
       AudioSource audio = gameObject.GetComponent<AudioSource>(); //Si el objeto no tiene componente de audio esta variable será NULL
       

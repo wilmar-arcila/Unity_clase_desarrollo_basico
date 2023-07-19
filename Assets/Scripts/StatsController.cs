@@ -91,14 +91,23 @@ public class StatsController : MonoBehaviour
         Color tempColor;
 
         tempColor = _powers[0].color;
+        tempColor.r = powers.item1?1f:0f;
+        tempColor.g = powers.item1?1f:0f;
+        tempColor.b = powers.item1?1f:0f;
         tempColor.a = powers.item1?1f:0.2392f;
         _powers[0].color = tempColor;
 
         tempColor = _powers[1].color;
+        tempColor.r = powers.item2?1f:0f;
+        tempColor.g = powers.item2?1f:0f;
+        tempColor.b = powers.item2?1f:0f;
         tempColor.a = powers.item2?1f:0.2392f;
         _powers[1].color = tempColor;
 
         tempColor = _powers[2].color;
+        tempColor.r = powers.item3?1f:0f;
+        tempColor.g = powers.item3?1f:0f;
+        tempColor.b = powers.item3?1f:0f;
         tempColor.a = powers.item3?1f:0.2392f;
         _powers[2].color = tempColor;
     }
