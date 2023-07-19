@@ -83,16 +83,16 @@ public class CharacterStatsManager : MonoBehaviour
         powers[2] = _powers.item3;
     }
     public bool setPower1(bool _power){
-        power[0] += _power;
-        return power[0];
+        powers[0] = _power;
+        return powers[0];
     }
     public bool setPower2(bool _power){
-        power[1] += _power;
-        return power[1];
+        powers[1] = _power;
+        return powers[1];
     }
     public bool setPower3(bool _power){
-        power[2] += _power;
-        return power[2];
+        powers[2] = _power;
+        return powers[2];
     }
 
     public void setRespawnPoint(Vector3 _respawnPoint){
