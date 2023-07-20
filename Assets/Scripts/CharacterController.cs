@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {    
-    float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
-    float fuerzaSalto          = 50;     // x veces la masa del personaje
-    float fuerzaImpulso        = 25000;  // Fuerza en Newtons
-    float fuerzaDesplazamiento = 1000;   // Fuerza en Newtons
+    private float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
+    private float fuerzaSalto          = 50;     // x veces la masa del personaje
+    private float fuerzaImpulso        = 25000;  // Fuerza en Newtons
+    private float fuerzaDesplazamiento = 1000;   // Fuerza en Newtons
+
+    private float sensibilidadCaida    = 0.5;    // Alcanzada esta velocidad descendente se considera que el personaje está cayendo
+    private float sensibilidadRotacion = 0.3;    // Alcanzada esta velocidad circular se considera que el personaje está rotando
+
+    private float longitudRaycast      = 0.6;    // Longitud de los rayos laterales para detectar muros
 
     private Rigidbody2D rb2d;       // Variable para mantener la referencia al componente Rigidbody2D
     private Animator animator;      // Variable para mantener la referencia al componente Animator
@@ -36,17 +41,17 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         // Se dibujan los rayos solo para DEPURACIÓN
-        Debug.DrawRay(transform.position, 0.6f*transform.right, Color.red);
-        Debug.DrawRay(transform.position, -0.6f*transform.right, Color.red);
+        Debug.DrawRay(transform.position, longitudRaycast*transform.right, Color.red);
+        Debug.DrawRay(transform.position, -longitudRaycast*transform.right, Color.red);
 
-        HitR = Physics2D.Raycast(transform.position, transform.right, 0.6f, rayMask);
-        HitL = Physics2D.Raycast(transform.position, transform.right, -0.6f, rayMask);
+        HitR = Physics2D.Raycast(transform.position, transform.right, longitudRaycast, rayMask);
+        HitL = Physics2D.Raycast(transform.position, transform.right, -longitudRaycast, rayMask);
 
         if(PauseController.isPaused()){return;}
         
         // Si el personaje está rotando mucho se vuelve a poner vertical para evitar
         // que se vaya a quedar acostado en el piso
-        if(transform.rotation.z > 0.3 || transform.rotation.z < -0.3){
+        if(transform.rotation.z > sensibilidadRotacion || transform.rotation.z < -sensibilidadRotacion){
             Debug.Log("ROTATION: " + gameObject.transform.rotation.z);
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
@@ -75,7 +80,7 @@ public class CharacterController : MonoBehaviour
         // ** Detector de movimiento descendente **
         //    Sirve para cambiar la animación del personaje y como
         //    límite para realizar un segundo salto
-        if(rb2d.velocity.y < -0.5){
+        if(rb2d.velocity.y < -sensibilidadCaida){
             hasJumped = false;
             animator.SetBool("falling", true);
             animator.SetBool("jump", false);
