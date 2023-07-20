@@ -25,8 +25,6 @@ public class CharacterStatsManager : MonoBehaviour
         else{
             Destroy(this);
         }
-
-        //animator = GetComponent<Animator>();
         respawnPoint = new Vector3(0,respawnHigh,0);
     }
 
