@@ -5,29 +5,57 @@ using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
 {    
-    [SerializeField] GameObject pauseMenu;  // Asignar el panel PauseMenu a este objeto desde 
-                                            // el elemento 'script' en el inspector, una vez
-                                            // este script se haya asociado a los botones.
+    private static GameObject pauseMenu;
+    
+    private static bool paused = false;
+
+    void Start()
+    {
+        if(PauseController.pauseMenu == null){ // Al parecer cada que se activa el panel el objeto vuelve a instanciarse
+            pauseMenu = transform.GetChild(0).gameObject;
+            Debug.Log("pauseMenu: " + PauseController.pauseMenu);
+        }
+        
+        Time.timeScale = PauseController.paused?0f:1f;
+    }
+    
+    void Update()
+    {   // La tecla ESC controla la pausa
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Debug.Log("Key: ESC");
+            if(PauseController.paused){
+                Resume();
+            }
+            else{
+                Pause();
+            }
+        }
+
+        Time.timeScale = PauseController.paused?0f:1f;
+    }
+
+    public static bool isPaused(){
+        return PauseController.paused;
+    }
     
     public void Pause(){
-        Debug.Log("BUTTON -> Pause");
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        Debug.Log("PAUSE");
+        PauseController.pauseMenu.SetActive(true);
+        PauseController.paused = !PauseController.paused;
+        Debug.Log("Paused: " + PauseController.paused);
     }
 
     public void Resume(){
-        Debug.Log("BUTTON -> Resume");
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        Debug.Log("RESUME");
+        PauseController.pauseMenu.SetActive(false);
+        PauseController.paused = !PauseController.paused;
+        Debug.Log("Paused: " + PauseController.paused);
     }
 
     public void goMenu(int _escena){
-        Debug.Log("BUTTON -> Home");
-        Time.timeScale = 1f;
+        Debug.Log("BUTTON -> Menú");
+        PauseController.paused = false;
+        Debug.Log("Paused: " + PauseController.paused);
         SceneManager.LoadScene(_escena);
-    }
-
-    public void Audio(){
-        Debug.Log("BUTTON -> Audio");
     }
 }

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 2273fbb280e28794cbaac5e36f2861a2
+=======
+<<<<<<<< HEAD:Assets/Prefabs/UI.meta
+guid: c148b45c7cc668f438a3f496c6853b8a
+========
+guid: 2273fbb280e28794cbaac5e36f2861a2
+>>>>>>>> develop:Assets/Unity-UI-Rounded-Corners.meta
+>>>>>>> develop
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

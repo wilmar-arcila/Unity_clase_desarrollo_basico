@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animaciones/UI_elements/Button.controller.meta
+guid: cd37dd8d12f9aeaeca8837293a9a54a4
+========
+guid: 1e985b350b65e93c6950b90f09e4f1af
+>>>>>>>> develop:Assets/Animaciones/Trampas/Lanzallama.controller.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
