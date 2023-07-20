@@ -1,8 +1,15 @@
 fileFormatVersion: 2
-guid: ed54868ed2776cc458b5b5c145dffe0d
+<<<<<<<< HEAD:Assets/Videos/IntroRenderer.renderTexture.meta
+guid: 281cbd47ecf8a3f4f9ba377c0b2b16ce
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 8400000
+========
+guid: a1204eea5437bc4b3b3e44b3f0ff46c8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> develop:Assets/Animaciones/Personaje/Death.anim.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
