@@ -10,6 +10,16 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Paquetes gratuitos de la tienda de Assets de Unity
+/[Aa]ssets/CasualGameSounds/
+/[Aa]ssets/CasualGameSounds.meta
+/[Aa]ssets/Pixel\ Adventure\ 1/Scenes/
+/[Aa]ssets/Pixel\ Adventure\ 1/Scenes.meta
+
+# Otros paquetes gratuitos
+/[Aa]ssets/Unity-UI-Rounded-Corners/Examples/
+/[Aa]ssets/Unity-UI-Rounded-Corners/Examples.meta
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/

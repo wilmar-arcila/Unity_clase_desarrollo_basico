@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Videos/OscilloscopeRenderer.renderTexture.meta
+guid: 9517062341255989bb33c799c1d3609e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+========
 guid: c401b663688e606fd98c40e0d78453c3
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
+>>>>>>>> develop:Assets/Animaciones/Trampas/Fuego.anim.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

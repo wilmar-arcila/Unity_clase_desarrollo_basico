@@ -6,6 +6,8 @@ Este proyecto es utilizado para construir los ejercicios de clase para el curso 
 ### Paquetes de Assets
 Estos paquetes de Assets son utilizados en el juego y pueden o no estar incorporados en el repositorio[^1].
 - [Pixel Adventure 1](https://assetstore.unity.com/packages/2d/characters/pixel-adventure-1-155360)
+- [Casual Game Sounds](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116)
+- [Unity UI Rounded Corners](https://github.com/FFaUniHan/Unity_UI_Rounded_Corners) (tag v3.0.2-candidate)
 
 ### Documento de Diseño
 [VDD](/VDD/README.md)  
