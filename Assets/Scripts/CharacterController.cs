@@ -9,10 +9,10 @@ public class CharacterController : MonoBehaviour
     private float fuerzaImpulso        = 25000;  // Fuerza en Newtons
     private float fuerzaDesplazamiento = 1000;   // Fuerza en Newtons
 
-    private float sensibilidadCaida    = 0.5;    // Alcanzada esta velocidad descendente se considera que el personaje está cayendo
-    private float sensibilidadRotacion = 0.3;    // Alcanzada esta velocidad circular se considera que el personaje está rotando
+    private float sensibilidadCaida    = 0.5f;   // Alcanzada esta velocidad descendente se considera que el personaje está cayendo
+    private float sensibilidadRotacion = 0.3f;   // Alcanzada esta velocidad circular se considera que el personaje está rotando
 
-    private float longitudRaycast      = 0.6;    // Longitud de los rayos laterales para detectar muros
+    private float longitudRaycast      = 0.6f;   // Longitud de los rayos laterales para detectar muros
 
     private Rigidbody2D rb2d;       // Variable para mantener la referencia al componente Rigidbody2D
     private Animator animator;      // Variable para mantener la referencia al componente Animator
