@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
-        Debug.Log("INIT");
+        Debug.Log("[CharacterController] - Start");
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
         spriteR = GetComponent<SpriteRenderer>(); // Se obtiene la referencia al componente SpriteRenderer del personaje
