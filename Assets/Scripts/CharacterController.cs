@@ -41,8 +41,8 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         // Se dibujan los rayos solo para DEPURACIÓN
-        Debug.DrawRay(transform.position, longitudRaycast*transform.right, Color.red);
-        Debug.DrawRay(transform.position, -longitudRaycast*transform.right, Color.red);
+        // Debug.DrawRay(transform.position, longitudRaycast*transform.right, Color.red);
+        // Debug.DrawRay(transform.position, -longitudRaycast*transform.right, Color.red);
 
         HitR = Physics2D.Raycast(transform.position, transform.right, longitudRaycast, rayMask);
         HitL = Physics2D.Raycast(transform.position, transform.right, -longitudRaycast, rayMask);

@@ -14,8 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Opciones.unity
     guid: 80191879b72cacf549086c8c57fd3c60
-  - enabled: 0
-    path: Assets/Scenes/EscenaBase.unity
+  - enabled: 1
+    path: Assets/Scenes/EscenaUno.unity
     guid: cd194f19b759e0316874c5c2c781ab40
   - enabled: 1
     path: Assets/Scenes/EscenaDos.unity

@@ -31,12 +31,12 @@ public class InteractionEngine : MonoBehaviour
         animator.SetTrigger("death");
         manager.decreseLives();
         Debug.Log("Vidas: " + manager.getLives());
+        renderLives();
         if(manager.getLives() <= 0){
             Debug.Log("GAME OVER");
             gameoverRendererController.setActive(true);
         }
         else{
-            renderLives();
             StartCoroutine(respawnCharacter());
         }
     }
