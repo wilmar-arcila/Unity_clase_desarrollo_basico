@@ -8,7 +8,12 @@ TagManager:
   - Obstaculo
   - Trampa
   - FallDetector
-  - Collectable
+  - Collectable1
+  - Collectable2
+  - Collectable3
+  - Power1
+  - Power2
+  - Power3
   layers:
   - Default
   - TransparentFX
