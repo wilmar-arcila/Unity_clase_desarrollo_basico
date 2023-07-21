@@ -8,6 +8,7 @@ TagManager:
   - Obstaculo
   - Trampa
   - FallDetector
+  - Collectable
   layers:
   - Default
   - TransparentFX
