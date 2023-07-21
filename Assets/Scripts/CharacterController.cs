@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
-{    
-    private float nivelTecho           = 6.22f;  // Este valor representa la parte superior de la escena
+{   
     private float fuerzaSalto          = 50;     // x veces la masa del personaje
     private float fuerzaImpulso        = 25000;  // Fuerza en Newtons
     private float fuerzaDesplazamiento = 1000;   // Fuerza en Newtons

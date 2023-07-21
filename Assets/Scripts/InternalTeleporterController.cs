@@ -36,7 +36,7 @@ public class InternalTeleporterController : MonoBehaviour
       yield return new WaitUntil(() => audio.isPlaying == false); // Se ejecuta esta línea hasta que la condición sea verdadera
       Debug.Log("[Desappear]Yield Over");
       personaje.transform.position = waypoint;
-      yield return new WaitForSeconds(2);
+      yield return new WaitForSeconds(0.7f);
       personaje.GetComponent<Animator>().SetTrigger("respawn");
       Destroy(this);
    }

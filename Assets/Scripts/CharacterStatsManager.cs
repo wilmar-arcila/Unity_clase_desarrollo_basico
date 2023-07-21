@@ -15,6 +15,7 @@ public class CharacterStatsManager : MonoBehaviour
     private int scoreForItem1 = 1;
     private int scoreForItem2 = 2;
     private int scoreForItem3 = 3;
+    private int scoreForPower = 10;
 
     private float respawnHigh = 6f;
 
@@ -89,14 +90,17 @@ public class CharacterStatsManager : MonoBehaviour
     }
     public bool setPower1(bool _power){
         powers[0] = _power;
+        raiseScore(scoreForPower);
         return powers[0];
     }
     public bool setPower2(bool _power){
         powers[1] = _power;
+        raiseScore(scoreForPower);
         return powers[1];
     }
     public bool setPower3(bool _power){
         powers[2] = _power;
+        raiseScore(scoreForPower);
         return powers[2];
     }
 
