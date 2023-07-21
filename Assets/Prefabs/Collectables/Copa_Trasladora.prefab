@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8941697379438776704}
   - component: {fileID: 8941697379438776709}
   m_Layer: 0
-  m_Name: Copa_Transladora
+  m_Name: Copa_Trasladora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
