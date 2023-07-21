@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb2d;       // Variable para mantener la referencia al componente Rigidbody2D
     private Animator animator;      // Variable para mantener la referencia al componente Animator
     private SpriteRenderer spriteR; // Variable para mantener la referencia al componente SpriteRenderer
+    private CharacterStatsManager manager;
 
     private RaycastHit2D HitL, HitR;
 
@@ -30,7 +31,8 @@ public class CharacterController : MonoBehaviour
     
     void Start()
     {
-        gameObject.transform.position = new Vector3(-1.92f,nivelTecho,0);
+        manager = GetComponent<CharacterStatsManager>();
+        transform.position = manager.getRespawnPoint();
         Debug.Log("[CharacterController] - Start");
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
