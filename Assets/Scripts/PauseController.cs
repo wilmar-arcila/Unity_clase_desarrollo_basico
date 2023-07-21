@@ -37,6 +37,10 @@ public class PauseController : MonoBehaviour
     public static bool isPaused(){
         return PauseController.paused;
     }
+
+    public static void setPaused(bool _paused){
+        PauseController.paused = _paused;
+    }
     
     public void Pause(){
         Debug.Log("PAUSE");
@@ -50,12 +54,5 @@ public class PauseController : MonoBehaviour
         PauseController.pauseMenu.SetActive(false);
         PauseController.paused = !PauseController.paused;
         Debug.Log("Paused: " + PauseController.paused);
-    }
-
-    public void goMenu(int _escena){
-        Debug.Log("BUTTON -> Menú");
-        PauseController.paused = false;
-        Debug.Log("Paused: " + PauseController.paused);
-        SceneManager.LoadScene(_escena);
     }
 }

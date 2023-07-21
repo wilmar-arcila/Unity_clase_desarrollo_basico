@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8297659063743663481}
   m_Layer: 0
   m_Name: Personaje
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salto_SFX: {fileID: 8297659063743663480}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8297659063743663486
 MonoBehaviour:
   m_ObjectHideFlags: 0
