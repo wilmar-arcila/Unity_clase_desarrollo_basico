@@ -46,6 +46,21 @@ public class InteractionEngine : MonoBehaviour
                 manager.increseItem3(1);
                 renderItems();
                 break;
+            case "Power1":
+                Debug.Log("Power1");
+                manager.setPower1(true);
+                renderPowers();
+                break;
+            case "Power2":
+                Debug.Log("Power2");
+                manager.setPower2(true);
+                renderPowers();
+                break;
+            case "Power3":
+                Debug.Log("Power3");
+                manager.setPower3(true);
+                renderPowers();
+                break;
         }
     }
 
