@@ -52,19 +52,19 @@ public class CharacterController : MonoBehaviour
         // Si el personaje está rotando mucho se vuelve a poner vertical para evitar
         // que se vaya a quedar acostado en el piso
         if(transform.rotation.z > sensibilidadRotacion || transform.rotation.z < -sensibilidadRotacion){
-            Debug.Log("ROTATION: " + gameObject.transform.rotation.z);
+            //Debug.Log("ROTATION: " + gameObject.transform.rotation.z);
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         
         // Se verifica que el personaje se deba mover a la izquierda o a la derecha
         if(Input.GetKey("right") && enElPiso){
-            Debug.Log("RIGHT");
+            //Debug.Log("RIGHT");
             rb2d.AddForce(new Vector2(fuerzaDesplazamiento, 0));
             animator.SetBool("running", true);
             spriteR.flipX=false;
         }
         else if(Input.GetKey("left") && enElPiso){
-            Debug.Log("LEFT");
+            //Debug.Log("LEFT");
             rb2d.AddForce(new Vector2(-fuerzaDesplazamiento, 0));
             animator.SetBool("running", true);
             spriteR.flipX=true;
@@ -89,7 +89,7 @@ public class CharacterController : MonoBehaviour
 
         // Implementación del salto
         if((Input.GetKeyDown("space") && enElPiso)||(Input.GetKeyDown("space") && hasJumped)){
-            Debug.Log("UP - enElPiso: " + enElPiso);
+            //Debug.Log("FLOOR JUMP");
             if(hasJumped){
                 // Esto se ejecuta cuando YA HA SALTADO por primera vez
                 animator.SetBool("doubleJump", true);
@@ -113,7 +113,7 @@ public class CharacterController : MonoBehaviour
 
         // Implementación del salto del muro
         if(Input.GetKeyDown("space") && (enElMuroL || enElMuroR)){
-            Debug.Log("WALL JUMP");
+            //Debug.Log("WALL JUMP");
             animator.SetBool("jump", true);
             if(enElMuroL){
                 rb2d.AddForce(new Vector2(fuerzaImpulso, -0.5f*fuerzaSalto*Physics2D.gravity[1]*rb2d.mass));
@@ -143,7 +143,7 @@ public class CharacterController : MonoBehaviour
 
         // Personaje en el aire
         if((HitL.collider == null) && (HitR.collider == null) && !enElPiso){
-            Debug.Log("AIRE");
+            //Debug.Log("AIRE");
             animator.SetBool("wall", false);
             enElMuroL = false;
             enElMuroR = false;
@@ -156,7 +156,7 @@ public class CharacterController : MonoBehaviour
         if(collision.transform.tag == "Ground"){
             enElPiso = true;
             animator.SetBool("falling", false);
-            Debug.Log("GROUND COLLISION");
+            //Debug.Log("GROUND COLLISION");
         }
         else if(collision.transform.tag == "Obstaculo"){
             enElPiso = true;

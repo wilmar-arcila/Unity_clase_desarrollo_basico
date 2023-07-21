@@ -21,14 +21,36 @@ public class InteractionEngine : MonoBehaviour
         gameoverRendererController = gameOverRenderer.transform.GetComponent<GameOverController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter2D(Collider2D collider){
+        switch(collider.tag){
+            case "Trampa":
+                Debug.Log("TRAMPA");
+                manageDeath();
+                break;
+            case "FallDetector":
+                Debug.Log("Caída");
+                manageDeath();
+                break;
+            case "Collectable1":
+                Debug.Log("Collectable1");
+                manager.increseItem1(1);
+                renderItems();
+                break;
+            case "Collectable2":
+                Debug.Log("Collectable2");
+                manager.increseItem2(1);
+                renderItems();
+                break;
+            case "Collectable3":
+                Debug.Log("Collectable3");
+                manager.increseItem3(1);
+                renderItems();
+                break;
+        }
     }
 
     private void manageDeath(){
-        animator.SetTrigger("death");
+        animator.SetTrigger("desappear");
         manager.decreseLives();
         Debug.Log("Vidas: " + manager.getLives());
         renderLives();
@@ -48,17 +70,6 @@ public class InteractionEngine : MonoBehaviour
         transform.position = manager.getRespawnPoint();
     }
 
-    private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.transform.tag == "Trampa"){
-            Debug.Log("TRAMPA");
-            manageDeath();
-        }
-        else if(collider.tag == "FallDetector"){
-            Debug.Log("Caída");
-            manageDeath();
-        }
-    }
-
     private void renderScore(){
         statsRendererController.updateScore(manager.getScore());
     }
@@ -68,6 +79,7 @@ public class InteractionEngine : MonoBehaviour
     }
     private void renderItems(){
         statsRendererController.updateItems(manager.getItems());
+        renderScore();
     }
     private void renderPowers(){
         statsRendererController.updatePowers(manager.getPowers());

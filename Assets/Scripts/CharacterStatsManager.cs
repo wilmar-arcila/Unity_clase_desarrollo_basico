@@ -12,6 +12,10 @@ public class CharacterStatsManager : MonoBehaviour
     private int[] items = new int[]{0,0,0};
     private bool[] powers = new bool[]{false,false,false};
 
+    private int scoreForItem1 = 1;
+    private int scoreForItem2 = 2;
+    private int scoreForItem3 = 3;
+
     private float respawnHigh = 6f;
 
 
@@ -61,14 +65,17 @@ public class CharacterStatsManager : MonoBehaviour
     }
     public int increseItem1(int _item){
         items[0] += _item;
+        raiseScore(scoreForItem1);
         return items[0];
     }
     public int increseItem2(int _item){
         items[1] += _item;
+        raiseScore(scoreForItem2);
         return items[1];
     }
     public int increseItem3(int _item){
         items[2] += _item;
+        raiseScore(scoreForItem3);
         return items[2];
     }
 

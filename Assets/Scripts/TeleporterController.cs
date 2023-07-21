@@ -22,6 +22,7 @@ public class TeleporterController : MonoBehaviour
         animator.SetTrigger("collected");
 
         // ESPERAR A QUE TERMINE LA REPRODUCCIÓN DEL SONIDO
-        sceneController.changeScene(destinationEscene);       
+        sceneController.changeScene(destinationEscene);
+        Destroy(this);
     }
 }
