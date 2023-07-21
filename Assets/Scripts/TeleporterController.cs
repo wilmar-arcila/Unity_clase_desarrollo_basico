@@ -12,17 +12,19 @@ public class TeleporterController : MonoBehaviour
     private Animator animator;
 
     private void Start() {
-        sceneController = transform.GetComponent<SceneController>();
-        animator = transform.GetComponent<Animator>();
+        sceneController = GetComponent<SceneController>();
+        animator = GetComponent<Animator>();
     }
     
     private void OnTriggerEnter2D(Collider2D collider){
-        Debug.Log("Teleporter");
-        teleporter_SFX.Play();
-        animator.SetTrigger("collected");
+        if(collider.tag == "Player"){
+            Debug.Log("Teleporter");
+            teleporter_SFX.Play();
+            animator.SetTrigger("collected");
 
-        // ESPERAR A QUE TERMINE LA REPRODUCCIÓN DEL SONIDO
-        sceneController.changeScene(destinationEscene);
-        Destroy(this);
+            // ESPERAR A QUE TERMINE LA REPRODUCCIÓN DEL SONIDO
+            sceneController.changeScene(destinationEscene);
+            Destroy(this);
+        }
     }
 }

@@ -66,7 +66,7 @@ public class InteractionEngine : MonoBehaviour
     private IEnumerator respawnCharacter(){
         Debug.Log("Respawn Character at " + manager.getRespawnPoint());
         yield return new WaitForSeconds(1);
-        animator.SetTrigger("iddle");
+        animator.SetTrigger("respawn");
         transform.position = manager.getRespawnPoint();
     }
 

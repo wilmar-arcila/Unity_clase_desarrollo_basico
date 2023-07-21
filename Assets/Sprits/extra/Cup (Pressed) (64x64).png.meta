@@ -1,28 +1,7 @@
 fileFormatVersion: 2
-guid: 3421078018dc3934a8c1ab3b7bf89aa0
+guid: 5097f16db9a2ddbc0be5ae1aefa82f2c
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5583492486709806376
-    second: Appearing (96x96)_0
-  - first:
-      213: -7221402579709423187
-    second: Appearing (96x96)_1
-  - first:
-      213: 6077175626366064899
-    second: Appearing (96x96)_2
-  - first:
-      213: -1869290018219920624
-    second: Appearing (96x96)_3
-  - first:
-      213: 47813434996547701
-    second: Appearing (96x96)_4
-  - first:
-      213: -942136525895816471
-    second: Appearing (96x96)_5
-  - first:
-      213: 5061900860415834490
-    second: Appearing (96x96)_6
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -54,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -68,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -83,15 +62,15 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
-  cookieLightType: 1
+  applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,7 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -138,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Appearing (96x96)_0
+      name: Cup (Pressed) (64x64)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39da1cfcde2d4f24593e67a0f2c1126f
-      internalID: 5583492486709806376
+      spriteID: bfaa8d66fd7f2faeea6661678767dcbc
+      internalID: 817536526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Appearing (96x96)_1
+      name: Cup (Pressed) (64x64)_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +152,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 177ae72c6546518488d4d9784a09258a
-      internalID: -7221402579709423187
+      spriteID: 88291e8644cd0d5168de030de4f3ee07
+      internalID: -1516008516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Appearing (96x96)_2
+      name: Cup (Pressed) (64x64)_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9069ff41e2a5e578e9bc550d59a8041d
+      internalID: 1864116760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cup (Pressed) (64x64)_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c15876ae95865d45b18647f040696c0
-      internalID: 6077175626366064899
+      spriteID: a6107e93253ad1c44b89a623e88aba7e
+      internalID: 2091303802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Appearing (96x96)_3
+      name: Cup (Pressed) (64x64)_4
       rect:
         serializedVersion: 2
-        x: 288
+        x: 256
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c29b90a9b0dae7947a0b5ff2a736f8cc
-      internalID: -1869290018219920624
+      spriteID: 0490646e9e120e74998bf212a2b8a7b9
+      internalID: 1088674614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Appearing (96x96)_4
+      name: Cup (Pressed) (64x64)_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d90ad4832190b00be88b7567c74d81
+      internalID: -1912391966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cup (Pressed) (64x64)_6
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb0ef8a4a01ca5d4a9f1b29045666752
-      internalID: 47813434996547701
+      spriteID: d9ac5d15d4a8e0212bd465182e6aada3
+      internalID: 1479032572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Appearing (96x96)_5
+      name: Cup (Pressed) (64x64)_7
       rect:
         serializedVersion: 2
-        x: 480
+        x: 448
         y: 0
-        width: 96
-        height: 96
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,29 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ae0b85f2262aa24c83209a55622712f
-      internalID: -942136525895816471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Appearing (96x96)_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80d5cd797f317c246b57ad3fb9370333
-      internalID: 5061900860415834490
+      spriteID: 60204a5cd14ae93a18050909789129f7
+      internalID: -110625991
       vertices: []
       indices: 
       edges: []
@@ -295,13 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Appearing (96x96)_0: 5583492486709806376
-      Appearing (96x96)_1: -7221402579709423187
-      Appearing (96x96)_2: 6077175626366064899
-      Appearing (96x96)_3: -1869290018219920624
-      Appearing (96x96)_4: 47813434996547701
-      Appearing (96x96)_5: -942136525895816471
-      Appearing (96x96)_6: 5061900860415834490
+      Cup (Pressed) (64x64)_0: 817536526
+      Cup (Pressed) (64x64)_1: -1516008516
+      Cup (Pressed) (64x64)_2: 1864116760
+      Cup (Pressed) (64x64)_3: 2091303802
+      Cup (Pressed) (64x64)_4: 1088674614
+      Cup (Pressed) (64x64)_5: -1912391966
+      Cup (Pressed) (64x64)_6: 1479032572
+      Cup (Pressed) (64x64)_7: -110625991
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -14,11 +14,13 @@ public class CollectableController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
-        GetComponent<Collider2D>().enabled=false; // Se deshabilita el collider para evitar que lo toque más de una vez en la misma acción
-        Debug.Log("Collectable");
-        collectable_SFX.Play();
-        animator.SetTrigger("collected");
-        StartCoroutine(destroyObjectWithAudio(collectable_SFX));    
+        if(collider.tag == "Player"){
+            GetComponent<Collider2D>().enabled=false; // Se deshabilita el collider para evitar que lo toque más de una vez en la misma acción
+            Debug.Log("Collectable");
+            collectable_SFX.Play();
+            animator.SetTrigger("collected");
+            StartCoroutine(destroyObjectWithAudio(collectable_SFX));
+        }
     }
 
     private IEnumerator destroyObjectWithAudio(AudioSource audio){
