@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526f06dcd7c6a6b0d8730a4725cbb588, type: 3}
+  m_Name: renaCUAJO
+  m_EditorClassIdentifier: 
+  personaje: {fileID: 8297659063743663478, guid: db7a7b31fc914e46cb21b29b44784ba2, type: 3}
+  imagenPersonaje: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  nombrePersonaje: renaCUAJO
