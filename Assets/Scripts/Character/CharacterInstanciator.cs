@@ -5,11 +5,13 @@ using UnityEngine;
 public class CharacterInstanciator : MonoBehaviour
 {
     private GameManager manager;
+    private CharacterStatsManager statsManager;
 
     void Start()
     {
         manager = GameManager.getInstance();
+        statsManager = CharacterStatsManager.getInstance();
         int indexJugador = PlayerPrefs.GetInt("JugadorIndex");
-        Instantiate(manager.getCharacter(), transform.position, Quaternion.identity);
+        Instantiate(manager.getCharacter(), statsManager.getRespawnPoint(), Quaternion.identity);
     }
 }
