@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     private Animator animator;      // Variable para mantener la referencia al componente Animator
     private SpriteRenderer spriteR; // Variable para mantener la referencia al componente SpriteRenderer
     private CharacterStatsManager manager;
+    private InteractionEngine characterInteractionPublisher;
 
     private RaycastHit2D HitL, HitR;
 
@@ -35,7 +36,34 @@ public class CharacterController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
         spriteR = GetComponent<SpriteRenderer>(); // Se obtiene la referencia al componente SpriteRenderer del personaje
-        
+        characterInteractionPublisher = GetComponent<InteractionEngine>();
+        if (characterInteractionPublisher != null) // Se suscribe a los respectivos eventos
+        {
+            characterInteractionPublisher.CharacterLivesChanged += OnCharacterLivesChanged;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (characterInteractionPublisher != null) // Cancela la suscripción a los eventos
+        {
+            characterInteractionPublisher.CharacterLivesChanged -= OnCharacterLivesChanged;
+        }
+    }
+    private void OnCharacterLivesChanged(int deltaLives)
+    {
+        Debug.Log("[CharacterController]Lives Changed: " + deltaLives);
+        if(deltaLives < 0){
+            animator.SetTrigger("desappear");
+            if(manager.getLives()>0){
+                StartCoroutine(respawnCharacter());
+            }
+        }        
+    }
+
+    private IEnumerator respawnCharacter(){
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("respawn");
+        transform.position = manager.getRespawnPoint();
     }
 
     void Update()

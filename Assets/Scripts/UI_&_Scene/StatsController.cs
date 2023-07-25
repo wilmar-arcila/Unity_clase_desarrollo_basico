@@ -12,11 +12,54 @@ public class StatsController : MonoBehaviour
     private Image[]     _lives     = null;
     private Image[]     _NO_lives  = null;
 
+    
+
     private CharacterStatsManager manager;
+
+    //////////////////////////////////////////////
+    /*          OBSERVER PATTERN (as Observer)  */
+    [SerializeField] private InteractionEngine characterInteractionPublisher;
+    private void Awake()
+    {
+        if (characterInteractionPublisher != null) // Se suscribe a los respectivos eventos
+        {
+            /* characterInteractionPublisher.CharacterItemsChanged += OnCharacterItemsChanged;
+            characterInteractionPublisher.CharacterPowersChanged += OnCharacterPowersChanged;
+            characterInteractionPublisher.CharacterLivesChanged += OnCharacterLivesChanged;
+            characterInteractionPublisher.CharacterScoreChanged += OnCharacterScoreChanged; */
+        }
+    }
+    private void OnDestroy()
+    {
+        if (characterInteractionPublisher != null) // Cancela la suscripción a los eventos
+        {
+            /* characterInteractionPublisher.CharacterItemsChanged -= OnCharacterItemsChanged;
+            characterInteractionPublisher.CharacterPowersChanged -= OnCharacterPowersChanged;
+            characterInteractionPublisher.CharacterLivesChanged -= OnCharacterLivesChanged;
+            characterInteractionPublisher.CharacterScoreChanged -= OnCharacterScoreChanged; */
+        }
+    }
+    /* private void OnCharacterItemsChanged()
+    {
+        Debug.Log("Items Changed");
+    }
+    private void OnCharacterLivesChanged()
+    {
+        Debug.Log("Lives Changed");
+    }
+    private void OnCharacterPowersChanged()
+    {
+        Debug.Log("Powers Changed");
+    }
+    private void OnCharacterScoreChanged()
+    {
+        Debug.Log("Score Changed");
+    } */
+    //////////////////////////////////////////////
 
     void Start()
     {
-        manager = CharacterStatsManager.getInstance();
+        //manager = CharacterStatsManager.getInstance();
 
         _items    = new TMP_Text[3];
         _powers   = new Image[3];
@@ -37,14 +80,14 @@ public class StatsController : MonoBehaviour
         _powers[1]    = transform.GetChild(3).GetChild(1).gameObject.GetComponent<Image>();
         _powers[2]    = transform.GetChild(3).GetChild(2).gameObject.GetComponent<Image>();
 
-        updateLives(manager.getLives());
+        /* updateLives(manager.getLives());
         updatePowers(manager.getPowers());
         updateItems(manager.getItems());
         updateScore(manager.getScore());
         Debug.Log("Lives: " + manager.getLives());
         Debug.Log("Powers: " + manager.getPowers());
         Debug.Log("Items: " + manager.getItems());
-        Debug.Log("Score: " + manager.getScore());
+        Debug.Log("Score: " + manager.getScore()); */
     }
 
     public void updateLives(int lives){

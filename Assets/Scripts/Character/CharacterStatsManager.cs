@@ -18,6 +18,12 @@ public class CharacterStatsManager : MonoBehaviour
     private float respawnHigh = 6f;
 
     //////////////////////////////////////////////
+    /*          OBSERVER PATTERN (as Observer)  */
+    [SerializeField] private GameObject character;
+    private InteractionEngine characterInteractionPublisher;
+    //////////////////////////////////////////////
+    
+    //////////////////////////////////////////////
     /*          SINGLETON PATTERN               */
     private static CharacterStatsManager Instance;
     private void Awake()
@@ -33,11 +39,63 @@ public class CharacterStatsManager : MonoBehaviour
     public static CharacterStatsManager getInstance(){
         return CharacterStatsManager.Instance;
     }
-    ///////////////////////////////////////////////
+    //////////////////////////////////////////////
 
-    private void Start() {
+    //////////////////////////////////////////////
+    /*    OBSERVER PATTERN (as Observer)        */
+    private void Start()
+    {
+        characterInteractionPublisher = character.GetComponent<CharacterInstanciator>().getCharacter().GetComponent<InteractionEngine>();
+        if (characterInteractionPublisher != null) // Se suscribe a los respectivos eventos
+        {
+            characterInteractionPublisher.CharacterItemsChanged += OnCharacterItemsChanged;
+            characterInteractionPublisher.CharacterPowersChanged += OnCharacterPowersChanged;
+            characterInteractionPublisher.CharacterLivesChanged += OnCharacterLivesChanged;
+        }
+
         respawnPoint = new Vector3(0,respawnHigh,0);
     }
+    private void OnDestroy()
+    {
+        if (characterInteractionPublisher != null) // Cancela la suscripción a los eventos
+        {
+            characterInteractionPublisher.CharacterItemsChanged -= OnCharacterItemsChanged;
+            characterInteractionPublisher.CharacterPowersChanged -= OnCharacterPowersChanged;
+            characterInteractionPublisher.CharacterLivesChanged -= OnCharacterLivesChanged;
+        }
+    }
+    private void OnCharacterItemsChanged((int item1, int item2, int item3)deltaItems)
+    {
+        Debug.Log("[CharacterStatsManager]Items Changed: " + deltaItems);
+        if(deltaItems.item1 != 0){
+            changeItem1(deltaItems.item1);
+        }
+        if(deltaItems.item2 != 0){
+            changeItem2(deltaItems.item2);
+        }
+        if(deltaItems.item3!= 0){
+            changeItem3(deltaItems.item3);
+        }
+    }
+    private void OnCharacterLivesChanged(int deltaLives)
+    {
+        Debug.Log("[CharacterStatsManager]Lives Changed: " + deltaLives);
+        changeLives(deltaLives);
+    }
+    private void OnCharacterPowersChanged((int item1, int item2, int item3)deltaPowers)
+    {
+        Debug.Log("[CharacterStatsManager]Powers Changed: " + deltaPowers);
+        if(deltaPowers.item1 != 0){
+            changePower1(deltaPowers.item1 > 0?true:false);
+        }
+        if(deltaPowers.item2 != 0){
+            changePower2(deltaPowers.item2 > 0?true:false);
+        }
+        if(deltaPowers.item3 != 0){
+            changePower3(deltaPowers.item3 > 0?true:false);
+        }
+    }
+    ///////////////////////////////////////////////
 
     public void setScore(int _score){
         score = _score;
@@ -45,21 +103,19 @@ public class CharacterStatsManager : MonoBehaviour
     public int getScore(){
         return score;
     }
-    public int raiseScore(int _plusScore){
+    private void raiseScore(int _plusScore){
         score += _plusScore;
-        return score;
     }
 
     public int getLives(){
         return lives;
     }
-    public int decreseLives(){
-        lives--;
-        return lives;
-    }
-    public int increseLives(){
-        lives++;
-        return lives;
+    private void changeLives(int deltaL){
+        lives += deltaL;
+        if(lives <= 0){
+            Debug.Log("[CharacterStatsManager]GAME OVER");
+            //lanzar evento Gameover
+        }
     }
 
     public (int, int, int) getItems(){
@@ -70,20 +126,17 @@ public class CharacterStatsManager : MonoBehaviour
         items[1] = _items.item2;
         items[2] = _items.item3;
     }
-    public int increseItem1(int _item){
+    private void changeItem1(int _item){
         items[0] += _item;
         raiseScore(scoreForItem1);
-        return items[0];
     }
-    public int increseItem2(int _item){
+    private void changeItem2(int _item){
         items[1] += _item;
         raiseScore(scoreForItem2);
-        return items[1];
     }
-    public int increseItem3(int _item){
+    private void changeItem3(int _item){
         items[2] += _item;
         raiseScore(scoreForItem3);
-        return items[2];
     }
 
     public (bool, bool, bool) getPowers(){
@@ -94,20 +147,17 @@ public class CharacterStatsManager : MonoBehaviour
         powers[1] = _powers.item2;
         powers[2] = _powers.item3;
     }
-    public bool setPower1(bool _power){
+    private void changePower1(bool _power){
         powers[0] = _power;
         raiseScore(scoreForPower);
-        return powers[0];
     }
-    public bool setPower2(bool _power){
+    private void changePower2(bool _power){
         powers[1] = _power;
         raiseScore(scoreForPower);
-        return powers[1];
     }
-    public bool setPower3(bool _power){
+    private void changePower3(bool _power){
         powers[2] = _power;
         raiseScore(scoreForPower);
-        return powers[2];
     }
 
     public void setRespawnPoint(Vector3 _respawnPoint){

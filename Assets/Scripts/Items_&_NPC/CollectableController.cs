@@ -16,7 +16,7 @@ public class CollectableController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.tag == "Player"){
             GetComponent<Collider2D>().enabled=false; // Se deshabilita el collider para evitar que lo toque más de una vez en la misma acción
-            Debug.Log("Collectable");
+            Debug.Log("[CollectableController]Collectable");
             collectable_SFX.Play();
             animator.SetTrigger("collected");
             StartCoroutine(destroyObjectWithAudio(collectable_SFX));
@@ -24,9 +24,9 @@ public class CollectableController : MonoBehaviour
     }
 
     private IEnumerator destroyObjectWithAudio(AudioSource audio){
-      Debug.Log("[destroyObjectWithAudio]Yield Init");
+      Debug.Log("[CollectableController]Yield Init");
       yield return new WaitUntil(() => audio.isPlaying == false); // Se ejecuta esta línea hasta que la condición sea verdadera
-      Debug.Log("[destroyObjectWithAudio]Yield Over");
+      Debug.Log("[CollectableController]Yield Over");
       Destroy(this);
     }
 }

@@ -7,6 +7,8 @@ public class CharacterInstanciator : MonoBehaviour
     private GameManager manager;
     private CharacterStatsManager statsManager;
 
+    private GameObject character;
+
     void Start()
     {
         manager = GameManager.getInstance();
@@ -15,6 +17,10 @@ public class CharacterInstanciator : MonoBehaviour
         Debug.Log("JugadorIndex: " + indexJugador);
         Debug.Log("Jugador: " + manager.getCharacter());
         Debug.Log("RespawnPoint: " + statsManager.getRespawnPoint());
-        Instantiate(manager.getCharacter(), statsManager.getRespawnPoint(), Quaternion.identity);
+        character = Instantiate(manager.getCharacter(), statsManager.getRespawnPoint(), Quaternion.identity);
+    }
+
+    public GameObject getCharacter(){
+        return character;
     }
 }

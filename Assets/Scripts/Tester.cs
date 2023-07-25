@@ -5,9 +5,31 @@ using UnityEngine;
 public class Tester : MonoBehaviour
 {
     
-    [SerializeField] private GameObject testSubject;
+    //[SerializeField] private GameObject testSubject;
+
+    /* [SerializeField] private GameObject character;
+    private InteractionEngine eventsPublisher;
+    private void Start()
+    {
+        eventsPublisher = character.GetComponent<CharacterInstanciator>().getCharacter().GetComponent<InteractionEngine>();
+        if (eventsPublisher != null) // Se suscribe a los respectivos eventos
+        {
+            eventsPublisher.CharacterChanged += OnCharacterChanged;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (eventsPublisher != null) // Cancela la suscripción a los eventos
+        {
+            eventsPublisher.CharacterChanged -= OnCharacterChanged;
+        }
+    }
+    private void OnCharacterChanged()
+    {
+        Debug.Log("[Tester]Character Changed");
+    } */
     
-    private StatsController _script;
+    /* private StatsController _script;
     private int _score, item1, item2, item3;
     private float timer;
     private bool l1, l2, l3;
@@ -40,5 +62,5 @@ public class Tester : MonoBehaviour
             l1 = l2;
             l3 = false;
         }
-    }
+    } */
 }
