@@ -10,57 +10,39 @@ public class StatsController : MonoBehaviour
     private TMP_Text[]  _items     = null;
     private Image[]     _powers    = null;
     private Image[]     _lives     = null;
-    private Image[]     _NO_lives  = null;
-
-    
+    private Image[]     _NO_lives  = null;    
 
     private CharacterStatsManager manager;
 
     //////////////////////////////////////////////
     /*          OBSERVER PATTERN (as Observer)  */
-    [SerializeField] private InteractionEngine characterInteractionPublisher;
-    private void Awake()
+    private void Start()
     {
-        if (characterInteractionPublisher != null) // Se suscribe a los respectivos eventos
+        manager = CharacterStatsManager.getInstance();
+        if (manager != null) // Se suscribe a los respectivos eventos
         {
-            /* characterInteractionPublisher.CharacterItemsChanged += OnCharacterItemsChanged;
-            characterInteractionPublisher.CharacterPowersChanged += OnCharacterPowersChanged;
-            characterInteractionPublisher.CharacterLivesChanged += OnCharacterLivesChanged;
-            characterInteractionPublisher.CharacterScoreChanged += OnCharacterScoreChanged; */
+            manager.CharacterStatsChanged += OnCharacterStatsChanged;
         }
+        InitializePanel();
     }
     private void OnDestroy()
     {
-        if (characterInteractionPublisher != null) // Cancela la suscripción a los eventos
+        if (manager != null) // Cancela la suscripción a los eventos
         {
-            /* characterInteractionPublisher.CharacterItemsChanged -= OnCharacterItemsChanged;
-            characterInteractionPublisher.CharacterPowersChanged -= OnCharacterPowersChanged;
-            characterInteractionPublisher.CharacterLivesChanged -= OnCharacterLivesChanged;
-            characterInteractionPublisher.CharacterScoreChanged -= OnCharacterScoreChanged; */
+            manager.CharacterStatsChanged -= OnCharacterStatsChanged;
         }
     }
-    /* private void OnCharacterItemsChanged()
+    private void OnCharacterStatsChanged()
     {
-        Debug.Log("Items Changed");
+        updateLives(manager.getLives());
+        updatePowers(manager.getPowers());
+        updateItems(manager.getItems());
+        updateScore(manager.getScore());
     }
-    private void OnCharacterLivesChanged()
-    {
-        Debug.Log("Lives Changed");
-    }
-    private void OnCharacterPowersChanged()
-    {
-        Debug.Log("Powers Changed");
-    }
-    private void OnCharacterScoreChanged()
-    {
-        Debug.Log("Score Changed");
-    } */
     //////////////////////////////////////////////
 
-    void Start()
+    private void InitializePanel()
     {
-        //manager = CharacterStatsManager.getInstance();
-
         _items    = new TMP_Text[3];
         _powers   = new Image[3];
         _lives    = new Image[3];
@@ -80,17 +62,13 @@ public class StatsController : MonoBehaviour
         _powers[1]    = transform.GetChild(3).GetChild(1).gameObject.GetComponent<Image>();
         _powers[2]    = transform.GetChild(3).GetChild(2).gameObject.GetComponent<Image>();
 
-        /* updateLives(manager.getLives());
+        updateLives(manager.getLives());
         updatePowers(manager.getPowers());
         updateItems(manager.getItems());
         updateScore(manager.getScore());
-        Debug.Log("Lives: " + manager.getLives());
-        Debug.Log("Powers: " + manager.getPowers());
-        Debug.Log("Items: " + manager.getItems());
-        Debug.Log("Score: " + manager.getScore()); */
     }
 
-    public void updateLives(int lives){
+    private void updateLives(int lives){
         _lives[0].enabled = lives>0?true:false;
         _NO_lives[0].enabled = !_lives[0].enabled;
         _lives[1].enabled = lives>1?true:false;
@@ -98,16 +76,16 @@ public class StatsController : MonoBehaviour
         _lives[2].enabled = lives>2?true:false;
         _NO_lives[2].enabled = !_lives[2].enabled;
     }
-    public void updateLives((bool live1, bool live2, bool live3)lives){
+    /* public void updateLives((bool live1, bool live2, bool live3)lives){
         _lives[0].enabled = lives.live1?true:false;
         _NO_lives[0].enabled = !_lives[0].enabled;
         _lives[1].enabled = lives.live2?true:false;
         _NO_lives[1].enabled = !_lives[1].enabled;
         _lives[2].enabled = lives.live3?true:false;
         _NO_lives[2].enabled = !_lives[2].enabled;
-    }
+    } */
 
-    public void updateScore(int score){
+    private void updateScore(int score){
         if(score < 0){
             _score.text = "00000";
         }
@@ -119,7 +97,7 @@ public class StatsController : MonoBehaviour
         }
     }
 
-    public void updateItems((int item1, int item2, int item3)items){
+    private void updateItems((int item1, int item2, int item3)items){
         if(items.item1 < 0){
             _items[0].text = "00";
         }
@@ -151,7 +129,7 @@ public class StatsController : MonoBehaviour
         }
     }
 
-    public void updatePowers((bool item1, bool item2, bool item3)powers){
+    private void updatePowers((bool item1, bool item2, bool item3)powers){
         Color tempColor;
 
         tempColor = _powers[0].color;

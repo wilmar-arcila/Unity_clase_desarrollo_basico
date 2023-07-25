@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,10 @@ public class CharacterStatsManager : MonoBehaviour
 
     private float respawnHigh = 6f;
 
+     //////////////////////////////////////////////
+    /*         OBSERVER PATTERN (as Publisher)  */
+    public event Action CharacterStatsChanged;
+    public event Action CharacterGameOver;
     //////////////////////////////////////////////
     /*          OBSERVER PATTERN (as Observer)  */
     [SerializeField] private GameObject character;
@@ -99,12 +104,14 @@ public class CharacterStatsManager : MonoBehaviour
 
     public void setScore(int _score){
         score = _score;
+        CharacterStatsChanged?.Invoke();
     }
     public int getScore(){
         return score;
     }
     private void raiseScore(int _plusScore){
         score += _plusScore;
+        CharacterStatsChanged?.Invoke();
     }
 
     public int getLives(){
@@ -112,9 +119,11 @@ public class CharacterStatsManager : MonoBehaviour
     }
     private void changeLives(int deltaL){
         lives += deltaL;
+        CharacterStatsChanged?.Invoke();
         if(lives <= 0){
             Debug.Log("[CharacterStatsManager]GAME OVER");
-            //lanzar evento Gameover
+            CharacterGameOver?.Invoke();
+            lives = 3;
         }
     }
 
@@ -125,6 +134,7 @@ public class CharacterStatsManager : MonoBehaviour
         items[0] = _items.item1;
         items[1] = _items.item2;
         items[2] = _items.item3;
+        CharacterStatsChanged?.Invoke();
     }
     private void changeItem1(int _item){
         items[0] += _item;
@@ -146,6 +156,7 @@ public class CharacterStatsManager : MonoBehaviour
         powers[0] = _powers.item1;
         powers[1] = _powers.item2;
         powers[2] = _powers.item3;
+        CharacterStatsChanged?.Invoke();
     }
     private void changePower1(bool _power){
         powers[0] = _power;
