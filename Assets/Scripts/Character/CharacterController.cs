@@ -191,4 +191,8 @@ public class CharacterController : MonoBehaviour
             Debug.Log("OBSTACLE COLLISION");
         }
     }
+
+    public void setMask(LayerMask mask){
+        rayMask = mask;
+    }
 }

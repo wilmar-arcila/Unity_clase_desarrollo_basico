@@ -18,6 +18,7 @@ public class CharacterInstanciator : MonoBehaviour
         Debug.Log("Jugador: " + manager.getCharacter());
         Debug.Log("RespawnPoint: " + statsManager.getRespawnPoint());
         character = Instantiate(manager.getCharacter(), statsManager.getRespawnPoint(), Quaternion.identity);
+        character.GetComponent<CharacterController>().setMask(LayerMask.GetMask("Wall"));
     }
 
     public GameObject getCharacter(){
