@@ -16,7 +16,7 @@ public class StatsController : MonoBehaviour
 
     void Start()
     {
-        manager = CharacterStatsManager.statsManager;
+        manager = CharacterStatsManager.getInstance();
 
         _items    = new TMP_Text[3];
         _powers   = new Image[3];

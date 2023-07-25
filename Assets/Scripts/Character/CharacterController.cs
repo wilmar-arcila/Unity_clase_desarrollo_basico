@@ -31,7 +31,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         manager = CharacterStatsManager.getInstance();
-        transform.position = manager.getRespawnPoint();
+        //transform.position = manager.getRespawnPoint();
         Debug.Log("[CharacterController] - Start");
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
