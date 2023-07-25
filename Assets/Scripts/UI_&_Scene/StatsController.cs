@@ -12,8 +12,12 @@ public class StatsController : MonoBehaviour
     private Image[]     _lives     = null;
     private Image[]     _NO_lives  = null;
 
+    private CharacterStatsManager manager;
+
     void Start()
     {
+        manager = CharacterStatsManager.statsManager;
+
         _items    = new TMP_Text[3];
         _powers   = new Image[3];
         _lives    = new Image[3];
@@ -32,8 +36,25 @@ public class StatsController : MonoBehaviour
         _powers[0]    = transform.GetChild(3).GetChild(0).gameObject.GetComponent<Image>();
         _powers[1]    = transform.GetChild(3).GetChild(1).gameObject.GetComponent<Image>();
         _powers[2]    = transform.GetChild(3).GetChild(2).gameObject.GetComponent<Image>();
+
+        updateLives(manager.getLives());
+        updatePowers(manager.getPowers());
+        updateItems(manager.getItems());
+        updateScore(manager.getScore());
+        Debug.Log("Lives: " + manager.getLives());
+        Debug.Log("Powers: " + manager.getPowers());
+        Debug.Log("Items: " + manager.getItems());
+        Debug.Log("Score: " + manager.getScore());
     }
 
+    public void updateLives(int lives){
+        _lives[0].enabled = lives>0?true:false;
+        _NO_lives[0].enabled = !_lives[0].enabled;
+        _lives[1].enabled = lives>1?true:false;
+        _NO_lives[1].enabled = !_lives[1].enabled;
+        _lives[2].enabled = lives>2?true:false;
+        _NO_lives[2].enabled = !_lives[2].enabled;
+    }
     public void updateLives((bool live1, bool live2, bool live3)lives){
         _lives[0].enabled = lives.live1?true:false;
         _NO_lives[0].enabled = !_lives[0].enabled;
