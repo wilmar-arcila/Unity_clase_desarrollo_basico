@@ -16,7 +16,7 @@ public class InteractionEngine : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        manager = GetComponent<CharacterStatsManager>();
+        manager = CharacterStatsManager.getInstance();
         statsRendererController = statsRenderer.transform.GetComponent<StatsController>();
         gameoverRendererController = gameOverRenderer.transform.GetComponent<GameOverController>();
     }

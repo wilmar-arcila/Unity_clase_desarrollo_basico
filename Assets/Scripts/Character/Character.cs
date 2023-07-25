@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NuevoPersonaje", menuName = "Playables/Personaje", order = 1)]
 
-public class Character : ScriptableObject, IProduct
+public class Character : ScriptableObject
 {
     public GameObject personaje;
 

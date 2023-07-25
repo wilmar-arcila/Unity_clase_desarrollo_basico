@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
-    public static CharacterStatsManager statsManager;
-
     private Vector3 respawnPoint;
     private int lives = 3;
     private int score = 0;
@@ -19,17 +17,25 @@ public class CharacterStatsManager : MonoBehaviour
 
     private float respawnHigh = 6f;
 
-
-    private void Start()
+    //////////////////////////////////////////////
+    /*          SINGLETON PATTERN               */
+    private static CharacterStatsManager Instance;
+    private void Awake()
     {
-        // Se crea un SINGLETON del objeto que mantiene las estadísticas del personaje
-        if(statsManager == null){
-            statsManager = this;
+        if(CharacterStatsManager.Instance == null){
+            CharacterStatsManager.Instance = this;
             DontDestroyOnLoad(this);
         }
         else{
             Destroy(this);
         }
+    }
+    public static CharacterStatsManager getInstance(){
+        return CharacterStatsManager.Instance;
+    }
+    ///////////////////////////////////////////////
+
+    private void Start() {
         respawnPoint = new Vector3(0,respawnHigh,0);
     }
 

@@ -11,13 +11,16 @@ public class CharacterSelectionController : MonoBehaviour
     [SerializeField] private Image imagen;
     [SerializeField] private TextMeshProUGUI nombre;
 
-    [SerializeField] private CharacterSelectionManager manager;
+    [SerializeField] private ItemsHolder holder;
+
+    private GameManager manager;
 
     void Start()
     {
+        manager = GameManager.getInstance();
         index = PlayerPrefs.GetInt("JugadorIndex");
 
-        if(index > manager.personajes.Count - 1){
+        if(index > holder.personajes.Count - 1){
             index = 0;
         }
         cambiarJugador();
@@ -25,12 +28,13 @@ public class CharacterSelectionController : MonoBehaviour
 
     private void cambiarJugador(){
         PlayerPrefs.SetInt("JugadorIndex", index);
-        imagen.sprite = manager.personajes[index].imagenPersonaje;
-        nombre.text = manager.personajes[index].nombrePersonaje;
+        imagen.sprite = holder.personajes[index].imagenPersonaje;
+        nombre.text = holder.personajes[index].nombrePersonaje;
+        manager.setCharacter(holder.personajes[index].personaje);
     }
 
     public void siguientePersonaje(){
-        if(index == manager.personajes.Count-1){
+        if(index == holder.personajes.Count-1){
             index = 0;
         }
         else{
@@ -40,7 +44,7 @@ public class CharacterSelectionController : MonoBehaviour
     }
     public void anteriorPersonaje(){
         if(index == 0){
-            index = manager.personajes.Count-1;
+            index = holder.personajes.Count-1;
         }
         else{
             index--;

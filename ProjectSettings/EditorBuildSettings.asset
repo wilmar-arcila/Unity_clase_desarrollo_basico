@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EscenaDos.unity
     guid: 9d00d2c01155d37009a7b178b0d079ff
+  - enabled: 1
+    path: Assets/Scenes/SeleccionPersonaje.unity
+    guid: 697b8f5d0b6b195b484b6ae460aafa7e
   m_configObjects: {}
