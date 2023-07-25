@@ -4,11 +4,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NuevoPersonaje", menuName = "Playables/Personaje", order = 1)]
 
-public class Character : ScriptableObject
+public class Character : ScriptableObject, IProduct
 {
     public GameObject personaje;
 
     public Sprite imagenPersonaje;
 
-    public string nombrePersonaje;    
+    public string nombrePersonaje;
 }
