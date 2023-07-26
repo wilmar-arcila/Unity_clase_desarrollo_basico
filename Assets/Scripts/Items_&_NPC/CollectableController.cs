@@ -14,7 +14,7 @@ public class CollectableController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.tag == "Player"){
+        if(collider.CompareTag("Player")){
             GetComponent<Collider2D>().enabled=false; // Se deshabilita el collider para evitar que lo toque más de una vez en la misma acción
             Debug.Log("[CollectableController]Collectable");
             collectable_SFX.Play();

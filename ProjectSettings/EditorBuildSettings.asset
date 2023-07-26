@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EscenaUno.unity
     guid: cd194f19b759e0316874c5c2c781ab40
   - enabled: 1
+    path: Assets/Scenes/EscenaDos.unity
+    guid: 57c8ae5d03e3b3870b4b33dee299dcb5
+  - enabled: 0
     path: Assets/Scenes/EscenaDos_A.unity
     guid: 9d00d2c01155d37009a7b178b0d079ff
   - enabled: 1

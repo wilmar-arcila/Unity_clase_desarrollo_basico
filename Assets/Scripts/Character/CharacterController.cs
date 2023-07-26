@@ -181,12 +181,12 @@ public class CharacterController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.transform.tag == "Ground"){
+        if(collision.collider.CompareTag("Ground")){
             enElPiso = true;
             animator.SetBool("falling", false);
             //Debug.Log("GROUND COLLISION");
         }
-        else if(collision.transform.tag == "Obstaculo"){
+        else if(collision.collider.CompareTag("Obstaculo")){
             enElPiso = true;
             Debug.Log("OBSTACLE COLLISION");
         }

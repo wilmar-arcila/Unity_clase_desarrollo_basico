@@ -17,7 +17,7 @@ public class InternalTeleporterController : MonoBehaviour
 
     
     private void OnTriggerEnter2D(Collider2D collider){
-        if(collider.tag == "Player"){
+        if(collider.CompareTag("Player")){
             Debug.Log("Internal Teleporter");
             teleporter_SFX.Play();
             animator.SetTrigger("collected");
