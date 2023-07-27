@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyLive : MonoBehaviour
 {
     [SerializeField] private int totalLives;
+    [SerializeField] private int decreaseRate;
 
     private int lives;
 
@@ -18,8 +19,12 @@ public class EnemyLive : MonoBehaviour
         return lives;
     }
 
-    public int setLives(int _lives){
+    public void setLives(int _lives){
         lives = _lives;
+    }
+
+    public int decreaseLives(){
+        lives -= decreaseRate;
         return lives;
     }
 }
