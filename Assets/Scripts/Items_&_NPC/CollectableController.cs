@@ -27,6 +27,6 @@ public class CollectableController : MonoBehaviour
       Debug.Log("[CollectableController]Yield Init");
       yield return new WaitUntil(() => audio.isPlaying == false); // Se ejecuta esta línea hasta que la condición sea verdadera
       Debug.Log("[CollectableController]Yield Over");
-      Destroy(this);
+      gameObject.SetActive(false);
     }
 }

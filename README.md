@@ -8,6 +8,7 @@ Estos paquetes de Assets son utilizados en el juego y pueden o no estar incorpor
 - [Pixel Adventure 1](https://assetstore.unity.com/packages/2d/characters/pixel-adventure-1-155360)
 - [Casual Game Sounds](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116)
 - [Unity UI Rounded Corners](https://github.com/FFaUniHan/Unity_UI_Rounded_Corners) (tag v3.0.2-candidate)
+- [Bringer of Death](https://assetstore.unity.com/packages/2d/characters/bringer-of-death-free-195719)
 
 ### Documento de Diseño
 [VDD](/VDD/README.md)  
@@ -24,4 +25,4 @@ Estos paquetes de Assets son utilizados en el juego y pueden o no estar incorpor
 _¿Algunas anotaciones extras?_  
 
 
-[^1]: Los paquetes de Assets disponibles en el **Asset Store** pueden incluirse en el archivo _.gitignore_ para ahorrar espacio en el repositorio. En caso de ser así, éstos paquetes de Assets deben ser descargados localmente.
+[^1]: Los paquetes de Assets disponibles en el **Asset Store** pueden incluirse en el archivo _.gitignore_ para ahorrar espacio en el repositorio. En caso de ser así, los assets utilizados deben ser copiados en una carpeta local en el proyecto y ésta carpeta ser sincronizada en el repositorio.
