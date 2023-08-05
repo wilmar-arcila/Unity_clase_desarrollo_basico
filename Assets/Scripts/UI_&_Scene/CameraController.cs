@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private GameObject characterInstanciator;
+    [SerializeField] private GameObject gameManagement;
     private GameObject character;
 
     private void Start() {
         Debug.Log("[CameraController]Start: " + character);
-        character = characterInstanciator.GetComponent<CharacterInstanciator>().getCharacter();
+        character = gameManagement.GetComponent<CharacterInstanciator>().GetCharacter();
         Debug.Log("[CameraController]Character: " + character);
         if(character == null){
             StartCoroutine(LateStart());
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     private IEnumerator LateStart(){
         Debug.Log("[CameraController]LateStart");
         yield return new WaitForSeconds(0.25f);
-        character = characterInstanciator.GetComponent<CharacterInstanciator>().getCharacter();
+        character = gameManagement.GetComponent<CharacterInstanciator>().GetCharacter();
         Debug.Log("[CameraController]Character: " + character);
         if(character == null){
             StartCoroutine(LateStart());

@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject defaultCharacter;
-    private GameObject actualCharacter; // Mantiene el Prefab del personaje con el que se desea jugar
+    public GameObject Character {get; set;} // Mantiene el Prefab del personaje con el que se desea jugar
+
+    public bool LockCharacterStats {get; set;} // ¿Se deben reiniciar las estadísticas del personaje?
 
     //////////////////////////////////////////////
     /*          SINGLETON PATTERN               */
@@ -14,22 +16,17 @@ public class GameManager : MonoBehaviour
     {
         if(GameManager.Instance == null){
             GameManager.Instance = this;
-            actualCharacter = defaultCharacter;
+            Character = defaultCharacter;
+            LockCharacterStats = false;
             DontDestroyOnLoad(this);
         }
         else{
             Destroy(this);
         }
     }
-    public static GameManager getInstance(){
+    public static GameManager GetInstance(){
         return GameManager.Instance;
     }
     ///////////////////////////////////////////////
 
-    public void setCharacter(GameObject character){
-        actualCharacter = character;
-    }
-    public GameObject getCharacter(){
-        return actualCharacter;
-    }
 }
