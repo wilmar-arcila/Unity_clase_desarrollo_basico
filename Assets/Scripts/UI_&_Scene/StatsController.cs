@@ -18,7 +18,7 @@ public class StatsController : MonoBehaviour
     /*          OBSERVER PATTERN (as Observer)  */
     private void Start()
     {
-        manager = CharacterStatsManager.getInstance();
+        manager = CharacterStatsManager.GetInstance();
         if (manager != null) // Se suscribe a los respectivos eventos
         {
             manager.CharacterStatsChanged += OnCharacterStatsChanged;
@@ -34,10 +34,10 @@ public class StatsController : MonoBehaviour
     }
     private void OnCharacterStatsChanged()
     {
-        updateLives(manager.getLives());
-        updatePowers(manager.getPowers());
-        updateItems(manager.getItems());
-        updateScore(manager.getScore());
+        UpdateLives(manager.GetLives());
+        UpdatePowers(manager.GetPowers());
+        UpdateItems(manager.GetItems());
+        UpdateScore(manager.GetScore());
     }
     //////////////////////////////////////////////
 
@@ -62,18 +62,18 @@ public class StatsController : MonoBehaviour
         _powers[1]    = transform.GetChild(3).GetChild(1).gameObject.GetComponent<Image>();
         _powers[2]    = transform.GetChild(3).GetChild(2).gameObject.GetComponent<Image>();
 
-        updateLives(manager.getLives());
-        updatePowers(manager.getPowers());
-        updateItems(manager.getItems());
-        updateScore(manager.getScore());
+        UpdateLives(manager.GetLives());
+        UpdatePowers(manager.GetPowers());
+        UpdateItems(manager.GetItems());
+        UpdateScore(manager.GetScore());
     }
 
-    private void updateLives(int lives){
-        _lives[0].enabled = lives>0?true:false;
+    private void UpdateLives(int lives){
+        _lives[0].enabled = lives>0;
         _NO_lives[0].enabled = !_lives[0].enabled;
-        _lives[1].enabled = lives>1?true:false;
+        _lives[1].enabled = lives>1;
         _NO_lives[1].enabled = !_lives[1].enabled;
-        _lives[2].enabled = lives>2?true:false;
+        _lives[2].enabled = lives>2;
         _NO_lives[2].enabled = !_lives[2].enabled;
     }
     /* public void updateLives((bool live1, bool live2, bool live3)lives){
@@ -85,7 +85,7 @@ public class StatsController : MonoBehaviour
         _NO_lives[2].enabled = !_lives[2].enabled;
     } */
 
-    private void updateScore(int score){
+    private void UpdateScore(int score){
         if(score < 0){
             _score.text = "00000";
         }
@@ -97,7 +97,7 @@ public class StatsController : MonoBehaviour
         }
     }
 
-    private void updateItems((int item1, int item2, int item3)items){
+    private void UpdateItems((int item1, int item2, int item3)items){
         if(items.item1 < 0){
             _items[0].text = "00";
         }
@@ -129,7 +129,7 @@ public class StatsController : MonoBehaviour
         }
     }
 
-    private void updatePowers((bool item1, bool item2, bool item3)powers){
+    private void UpdatePowers((bool item1, bool item2, bool item3)powers){
         Color tempColor;
 
         tempColor = _powers[0].color;

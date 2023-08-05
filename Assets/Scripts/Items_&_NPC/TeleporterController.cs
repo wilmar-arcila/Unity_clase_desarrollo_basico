@@ -21,9 +21,11 @@ public class TeleporterController : MonoBehaviour
             Debug.Log("Teleporter");
             teleporter_SFX.Play();
             animator.SetTrigger("collected");
+            CharacterStatsManager.GetInstance().ResetRespawnPoint();
+            GameManager.GetInstance().LockCharacterStats = true;
 
             // ESPERAR A QUE TERMINE LA REPRODUCCIÓN DEL SONIDO
-            sceneController.changeScene(destinationEscene);
+            sceneController.ChangeScene(destinationEscene);
             Destroy(this);
         }
     }

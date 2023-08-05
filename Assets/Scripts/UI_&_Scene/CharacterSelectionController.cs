@@ -17,7 +17,7 @@ public class CharacterSelectionController : MonoBehaviour
 
     void Start()
     {
-        manager = GameManager.getInstance();
+        manager = GameManager.GetInstance();
         index = PlayerPrefs.GetInt("JugadorIndex");
 
         if(index > holder.personajes.Count - 1){
@@ -30,7 +30,7 @@ public class CharacterSelectionController : MonoBehaviour
         PlayerPrefs.SetInt("JugadorIndex", index);
         imagen.sprite = holder.personajes[index].imagenPersonaje;
         nombre.text = holder.personajes[index].nombrePersonaje;
-        manager.setCharacter(holder.personajes[index].personaje);
+        manager.Character = holder.personajes[index].personaje;
     }
 
     public void siguientePersonaje(){

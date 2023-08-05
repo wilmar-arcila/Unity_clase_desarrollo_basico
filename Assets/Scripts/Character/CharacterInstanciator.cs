@@ -11,17 +11,17 @@ public class CharacterInstanciator : MonoBehaviour
 
     void Start()
     {
-        manager = GameManager.getInstance();
-        statsManager = CharacterStatsManager.getInstance();
+        manager = GameManager.GetInstance();
+        statsManager = CharacterStatsManager.GetInstance();
         int indexJugador = PlayerPrefs.GetInt("JugadorIndex");
         Debug.Log("JugadorIndex: " + indexJugador);
-        Debug.Log("Jugador: " + manager.getCharacter());
-        Debug.Log("RespawnPoint: " + statsManager.getRespawnPoint());
-        character = Instantiate(manager.getCharacter(), statsManager.getRespawnPoint(), Quaternion.identity);
-        character.GetComponent<CharacterController>().setMask(LayerMask.GetMask("Wall"));
+        Debug.Log("Jugador: " + manager.Character);
+        Debug.Log("RespawnPoint: " + statsManager.GetRespawnPoint());
+        character = Instantiate(manager.Character, statsManager.GetRespawnPoint(), Quaternion.identity);
+        character.GetComponent<CharacterController>().SetMask(LayerMask.GetMask("Wall"));
     }
 
-    public GameObject getCharacter(){
+    public GameObject GetCharacter(){
         return character;
     }
 }

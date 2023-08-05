@@ -12,7 +12,7 @@ public class GameOverController : MonoBehaviour
     /*          OBSERVER PATTERN (as Observer)  */
     public void Start() {
         gameOverPanel = transform.GetChild(0).gameObject;
-        manager = CharacterStatsManager.getInstance();
+        manager = CharacterStatsManager.GetInstance();
         if (manager != null) // Se suscribe a los respectivos eventos
         {
             manager.CharacterGameOver += OnCharacterGameOver;

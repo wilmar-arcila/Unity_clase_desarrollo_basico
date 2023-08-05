@@ -57,8 +57,8 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         Debug.Log("[CharacterController] - Start");
-
-        manager = CharacterStatsManager.getInstance();
+        manager = CharacterStatsManager.GetInstance();
+        manager.InitializeCharacterStats(gameObject); // Se asocia la instancia del jugador con las estadísticas que se han acumulado
         rb2d = GetComponent<Rigidbody2D>();       // Se obtiene la referencia al componente Rigidbody2D del personaje
         animator = GetComponent<Animator>();      // Se obtiene la referencia al componente Animator del personaje
         spriteR = GetComponent<SpriteRenderer>(); // Se obtiene la referencia al componente SpriteRenderer del personaje
@@ -68,8 +68,8 @@ public class CharacterController : MonoBehaviour
         fuerzaV = 0;
 
         // Patrón Observer (como Subscriber)
-        characterInteractionPublisher = GetComponent<InteractionEngine>();
-        if (characterInteractionPublisher != null) // Se suscribe a los respectivos eventos
+        // Se suscribe a los eventos en los cuales está interesado
+        if (TryGetComponent<InteractionEngine>(out characterInteractionPublisher))
         {
             characterInteractionPublisher.CharacterLivesChanged += OnCharacterLivesChanged;
         }
@@ -254,17 +254,17 @@ public class CharacterController : MonoBehaviour
         if(deltaLives < 0){
             animator.SetTrigger("desappear");
             estado = CharacterControllerState.IDDLE;
-            if(manager.getLives()>0){
-                StartCoroutine(respawnCharacter());
+            if(manager.GetLives()>0){
+                StartCoroutine(RespawnCharacter());
             }
         }        
     }
 
-    private IEnumerator respawnCharacter(){
+    private IEnumerator RespawnCharacter(){
         yield return new WaitForSeconds(1);
         estado = CharacterControllerState.IDDLE;
         animator.SetTrigger("respawn");
-        transform.position = manager.getRespawnPoint();
+        transform.position = manager.GetRespawnPoint();
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
@@ -279,7 +279,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void setMask(LayerMask mask){
+    public void SetMask(LayerMask mask){
         rayMask = mask;
     }
 }
